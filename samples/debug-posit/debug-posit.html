@@ -65,7 +65,7 @@
         snapshot();
 
         var markers = detector.detect(imageData);
-        drawCorners(markers);
+        //drawCorners(markers);
         updateScenes(markers);
         
         render();
@@ -104,6 +104,7 @@
     };
 
     function createRenderers(){
+        /*
       renderer1 = new THREE.WebGLRenderer();
       renderer1.setClearColor(0xffff00, 1);
       renderer1.setSize(canvas.width, canvas.height);
@@ -119,6 +120,7 @@
       scene2 = new THREE.Scene();
       camera2 = new THREE.PerspectiveCamera(40, canvas.width / canvas.height, 1, 1000);
       scene2.add(camera2);
+*/
 
       renderer3 = new THREE.WebGLRenderer();
       renderer3.setClearColor(0xffffff, 1);
@@ -135,11 +137,13 @@
     };
 
     function render(){
+        /*
       renderer1.clear();
       renderer1.render(scene1, camera1);
       
       renderer2.clear();
       renderer2.render(scene2, camera2);
+*/
 
       renderer3.autoClear = false;
       renderer3.clear();
@@ -148,12 +152,14 @@
     };
 
     function createScenes(){
+        /*
       plane1 = createPlane();
       scene1.add(plane1);
 
       plane2 = createPlane();
       scene2.add(plane2);
-      
+      */
+
       texture = createTexture();
       scene3.add(texture);
     
@@ -213,12 +219,12 @@
         
         pose = posit.pose(corners);
         
-        updateObject(plane1, pose.bestRotation, pose.bestTranslation);
-        updateObject(plane2, pose.alternativeRotation, pose.alternativeTranslation);
+        //updateObject(plane1, pose.bestRotation, pose.bestTranslation);
+        //updateObject(plane2, pose.alternativeRotation, pose.alternativeTranslation);
         updateObject(model, pose.bestRotation, pose.bestTranslation);
 
-        updatePose("pose1", pose.bestError, pose.bestRotation, pose.bestTranslation);
-        updatePose("pose2", pose.alternativeError, pose.alternativeRotation, pose.alternativeTranslation);
+        //updatePose("pose1", pose.bestError, pose.bestRotation, pose.bestTranslation);
+        //updatePose("pose2", pose.alternativeError, pose.alternativeRotation, pose.alternativeTranslation);
         
         step += 0.025;
         
@@ -267,12 +273,14 @@
 <body style="text-align: center; font-family: monospace;">
 
   <video id="video" width=320 height=240 autoplay="true" style="display:none;"></video>
-  
-  <div style="margin: 10px;"><strong>-= Augmented Reality =-</strong></div>
+
   <div style="width: 100%;">
     <div style="width: 650px; margin-left:auto; margin-right:auto;">
-      <canvas id="canvas" style="width: 320px; height: 240px; float: left; border: solid 1px black;"></canvas>
-      <div id="container" style="width: 320px; height: 240px; float: left; border: solid 1px black; background: green;"></div>
+      <canvas id="canvas" style="width: 640px; height: 480px; float: left; border: solid 1px black; display:none;"></canvas>
+
+      <div id="container" style="width: 640px; height: 480px; float: left; border: solid 1px black; background: green;"></div>
+
+      <!--
       <div style="clear: both;"></div>
       <div style="float: left; border: solid 1px black;">
         <div id="container1" style="width: 320px; height: 240px; background: red;"></div>
@@ -282,10 +290,10 @@
         <div id="container2" style="width: 320px; height: 240px; background: blue;"></div>
         <div id="pose2"></div>
       </div>
+      -->
+
     </div>
   </div>
-  <div style="clear: both;"></div>
-  <div style="margin: 15px;"><strong>Powered by <a href="http://code.google.com/p/js-aruco/">js-aruco</a> and <a href="https://github.com/mrdoob/three.js">Three.js</a></strong></div>
 
 </body>
   
