@@ -43,16 +43,16 @@
                 constraints.video = {deviceId:device.deviceId};
             }
         });
-      });
 
-      navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
-        if (window.webkitURL) {
-          video.src = window.webkitURL.createObjectURL(stream);
-        } else if (video.mozSrcObject !== undefined) {
-          video.mozSrcObject = stream;
-        } else {
-          video.src = stream;
-        }
+        navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+            if (window.webkitURL) {
+                video.src = window.webkitURL.createObjectURL(stream);
+            } else if (video.mozSrcObject !== undefined) {
+                video.mozSrcObject = stream;
+            } else {
+                video.src = stream;
+            }
+        });
       });
       
       detector = new AR.Detector();
